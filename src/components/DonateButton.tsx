@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useAccount, useSendTransaction, usePublicClient, useSwitchChain } from 'wagmi'
 import { parseEther } from 'viem'
-import { activeChainId } from '../config/network'
+import { activeChainId, DONATION_ADDRESS } from '../config/network'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -12,11 +12,6 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Heart } from 'lucide-react'
-
-/** Default: project maintainer. Override via VITE_DONATION_ADDRESS in .env */
-const DONATION_ADDRESS: `0x${string}` =
-  (import.meta.env.VITE_DONATION_ADDRESS as `0x${string}` | undefined) ??
-  '0x9F1768D32523D1f12726fCAF51e5ED44C40DAFa2'
 
 const PRESETS = ['50', '100', '250']
 
