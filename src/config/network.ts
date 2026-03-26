@@ -18,6 +18,11 @@ export const bazaarAddress = BAZAAR_ADDRESSES[activeChainId]!
 
 export const GLACIER_BASE = `https://glacier-api.avax.network/v1/chains/${activeChainId}/addresses`
 
+/** Donation address — override via VITE_DONATION_ADDRESS in .env */
+export const DONATION_ADDRESS: `0x${string}` =
+  (import.meta.env.VITE_DONATION_ADDRESS as `0x${string}` | undefined) ??
+  '0x9F1768D32523D1f12726fCAF51e5ED44C40DAFa2'
+
 /** Shared public client for read-only RPC calls outside of React hooks */
 export const dfkClient = createPublicClient({ chain: activeChain, transport: http() })
 

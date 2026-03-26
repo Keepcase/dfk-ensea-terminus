@@ -1,10 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
+import { GLACIER_BASE, DONATION_ADDRESS } from '../config/network'
 
-const DONATION_ADDRESS = (
-  import.meta.env.VITE_DONATION_ADDRESS ?? '0x0000000000000000000000000000000000000000'
-).toLowerCase()
-
-import { GLACIER_BASE } from '../config/network'
+const donationAddressLower = DONATION_ADDRESS.toLowerCase()
 
 interface GlacierAddressField {
   address: string
@@ -39,8 +36,8 @@ export interface Donor {
  */
 export function useDonationLeaderboard() {
   return useQuery<Donor[]>({
-    queryKey: ['donationLeaderboard', DONATION_ADDRESS],
-    enabled: DONATION_ADDRESS !== '0x0000000000000000000000000000000000000000',
+    queryKey: ['donationLeaderboard', donationAddressLower],
+    enabled: donationAddressLower !== '0x0000000000000000000000000000000000000000',
     staleTime: 30 * 60_000, // 30 minutes — leaderboard doesn't need to be real-time
     queryFn: async () => {
       const donors = new Map<
@@ -52,7 +49,7 @@ export function useDonationLeaderboard() {
       let pages = 0
 
       do {
-        const url = new URL(`${GLACIER_BASE}/${DONATION_ADDRESS}/transactions`)
+        const url = new URL(`${GLACIER_BASE}/${donationAddressLower}/transactions`)
         url.searchParams.set('pageSize', '100')
         if (pageToken) url.searchParams.set('pageToken', pageToken)
 
@@ -73,7 +70,7 @@ export function useDonationLeaderboard() {
           const fromAddr = typeof native.from === 'string' ? native.from : native.from?.address
 
           // Only count incoming transfers TO the donation address
-          if (!toAddr || toAddr.toLowerCase() !== DONATION_ADDRESS) continue
+          if (!toAddr || toAddr.toLowerCase() !== donationAddressLower) continue
           if (!fromAddr) continue
 
           const sender = fromAddr.toLowerCase()
