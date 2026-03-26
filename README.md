@@ -1,6 +1,6 @@
 # Ensea Terminus — DFK Marketplace
 
-An open-source orderbook marketplace for [DeFi Kingdoms](https://defikingdoms.com). Browse items, place buy/sell orders on the Bazaar, and manage open orders — all from your browser.
+An open-source orderbook marketplace for [DeFi Kingdoms](https://x.com/DeFiKingdoms). Browse items, place buy/sell orders on the Bazaar, and manage open orders — all from your browser.
 
 No backend, no database. Pure client-side React app talking directly to DFK Chain.
 
