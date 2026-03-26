@@ -197,6 +197,7 @@ export function TradeForm({ token, bestAsk, bestBid }: TradeFormProps) {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: ['orderbook', token.address] }),
         queryClient.invalidateQueries({ queryKey: ['userOrders', address] }),
+        queryClient.invalidateQueries({ queryKey: ['inventory', address] }),
       ])
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Transaction failed'
