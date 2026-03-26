@@ -7,7 +7,7 @@ import { usePlaceOrder } from '../hooks/usePlaceOrder'
 import { useApproval } from '../hooks/useApproval'
 import { useFeePercent } from '../hooks/useFeePercent'
 import {
-  formatJewelDisplay,
+  formatJewel,
   parseJewel,
   decodePrice,
   validateOrder,
@@ -120,17 +120,8 @@ export function TradeForm({ token, bestAsk, bestBid }: TradeFormProps) {
     )
   }
 
-  // Auto-pick decimal precision: show enough digits so value isn't "0"
-  function smartFormat(wei: bigint): string {
-    for (const decimals of [4, 6, 8]) {
-      const result = formatJewelDisplay(wei, decimals)
-      if (result !== '0') return result
-    }
-    return '<0.00000001'
-  }
-
-  const estimatedTotal = totalWei ? smartFormat(totalWei) : null
-  const estimatedFee = feeWei ? smartFormat(feeWei) : null
+  const estimatedTotal = totalWei ? formatJewel(totalWei) : null
+  const estimatedFee = feeWei ? formatJewel(feeWei) : null
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -197,6 +188,7 @@ export function TradeForm({ token, bestAsk, bestBid }: TradeFormProps) {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: ['orderbook', token.address] }),
         queryClient.invalidateQueries({ queryKey: ['userOrders', address] }),
+        queryClient.invalidateQueries({ queryKey: ['inventory', address] }),
       ])
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Transaction failed'
@@ -383,7 +375,7 @@ export function TradeForm({ token, bestAsk, bestBid }: TradeFormProps) {
                   variant="secondary"
                   className="font-mono text-xs border-border/20 bg-transparent text-foreground/80"
                 >
-                  ~{smartFormat(totalWei + (feeWei ?? 0n))} JEWEL
+                  {formatJewel(totalWei + (feeWei ?? 0n))} JEWEL
                 </Badge>
               </div>
             </div>

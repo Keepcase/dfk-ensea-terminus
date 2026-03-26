@@ -239,8 +239,13 @@ export function CatalogPage() {
             >
               <Link to={`/item/${token.slug}`}>
                 <Card className="group relative overflow-hidden border-border/25 hover:border-primary/30 bg-card/40 hover:bg-card/70 transition-all duration-200 cursor-pointer h-full hover:glow-gold hover:-translate-y-0.5">
-                  <CardContent className="p-3 sm:p-4">
-                    <div className="aspect-square rounded-lg bg-secondary/15 flex items-center justify-center mb-2 sm:mb-3 overflow-hidden relative">
+                  {inventory?.[getBalanceKey(token)] != null && (
+                    <span className="absolute top-1.5 right-1.5 bg-foreground/90 text-background text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded-md leading-none min-w-[1.25rem] text-center z-10">
+                      x{formatBalance(inventory![getBalanceKey(token)] ?? 0n, token.decimals)}
+                    </span>
+                  )}
+                  <CardContent className="p-3 sm:p-4 relative">
+                    <div className="aspect-square rounded-lg bg-secondary/15 flex items-center justify-center mb-2 sm:mb-3 overflow-hidden">
                       <img
                         src={getItemImageUrl(token.imageFile)}
                         alt={token.name}
@@ -254,11 +259,6 @@ export function CatalogPage() {
                           }
                         }}
                       />
-                      {inventory?.[getBalanceKey(token)] != null && (
-                        <span className="absolute top-1 right-1 bg-foreground/90 text-background text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded-md leading-none min-w-[1.25rem] text-center">
-                          x{formatBalance(inventory![getBalanceKey(token)] ?? 0n, token.decimals)}
-                        </span>
-                      )}
                     </div>
                     <h3 className="text-[12px] sm:text-[13px] font-medium truncate leading-tight text-foreground group-hover:text-primary transition-colors">
                       {token.name}

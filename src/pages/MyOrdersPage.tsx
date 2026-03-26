@@ -56,6 +56,7 @@ export function MyOrdersPage() {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: ['userOrders', address] }),
         queryClient.invalidateQueries({ queryKey: ['orderHistory', address] }),
+        queryClient.invalidateQueries({ queryKey: ['inventory', address] }),
       ])
     } catch (err) {
       setCancelError(err instanceof Error ? err.message : 'Cancel failed')

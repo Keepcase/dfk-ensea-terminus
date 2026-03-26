@@ -164,7 +164,7 @@ export function DonateButton() {
           <DonateForm />
           <div className="text-center text-xs text-muted-foreground/50 pt-1">
             <a
-              href="https://x.com/keepcase"
+              href="https://x.com/Keepcase"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground/60 hover:text-foreground transition-colors"
