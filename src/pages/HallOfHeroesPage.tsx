@@ -45,6 +45,10 @@ export function HallOfHeroesPage() {
         <p className="text-muted-foreground/40 text-sm mt-1.5 tracking-wide">
           Brave souls who keep Ensea Terminus running
         </p>
+        <p className="text-muted-foreground/30 text-xs mt-1 tracking-wide inline-flex items-center gap-1">
+          <img src="/images/jewel.png" alt="" className="w-3 h-3" />
+          JEWEL sent to the donation address appears here automatically
+        </p>
       </div>
 
       {isLoading ? (
