@@ -44,7 +44,6 @@ cp .env.example .env
 | `VITE_NETWORK` | No | `mainnet` (default) or `testnet` |
 | `VITE_DFK_RPC_URL` | No | Override default DFK Chain RPC endpoint |
 | `VITE_DONATION_ADDRESS` | No | Override default donation address |
-| `VITE_WALLETCONNECT_PROJECT_ID` | No | WalletConnect project ID ([get one free](https://cloud.reown.com)) |
 
 ### Testnet
 
