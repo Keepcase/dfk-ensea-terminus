@@ -17,14 +17,12 @@ interface Track {
 
 interface Region {
   label: string
-  logo: string
   tracks: Track[]
 }
 
 export const REGIONS: Region[] = [
   {
     label: 'Serendale',
-    logo: '/images/serendale-logo.png',
     tracks: [
       {
         name: 'Overworld',
@@ -76,11 +74,18 @@ export const REGIONS: Region[] = [
         name: 'Combat Zone',
         url: 'https://defi-kingdoms.b-cdn.net/game-audio/serendale/combat-zone-loop.ogg',
       },
+      {
+        name: 'Rocboc Hunt',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/serendale/rocboc-hunt-loop.ogg',
+      },
+      {
+        name: 'Combat',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/serendale/combat-loop.ogg',
+      },
     ],
   },
   {
     label: 'Crystalvale',
-    logo: '/images/crystalvale-logo.png',
     tracks: [
       {
         name: 'Overworld',
@@ -124,11 +129,18 @@ export const REGIONS: Region[] = [
         url: 'https://defi-kingdoms.b-cdn.net/game-audio/crystalvale/dark-summoner-loop.ogg',
       },
       { name: 'Cradle', url: 'https://dfk-hv.b-cdn.net/game-audio/crystalvale/cradle-loop.ogg' },
+      {
+        name: 'Boar',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/crystalvale/boar-loop.ogg',
+      },
+      {
+        name: 'Combat',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/crystalvale/combat-loop.ogg',
+      },
     ],
   },
   {
     label: 'Sundered Isles',
-    logo: '/images/sundered-isles-logo.png',
     tracks: [
       {
         name: 'Overworld',
@@ -141,6 +153,47 @@ export const REGIONS: Region[] = [
       {
         name: 'Registry',
         url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/registry-loop.ogg',
+      },
+      {
+        name: 'Ship',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/ship-loop.ogg',
+      },
+      {
+        name: 'Colosseum',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/colosseum-loop.ogg',
+      },
+      {
+        name: 'Commerce',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/commerce-loop.ogg',
+      },
+      {
+        name: 'Mariner',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/mariner-loop.ogg',
+      },
+      {
+        name: 'Military',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/military-loop.ogg',
+      },
+      {
+        name: 'Alleyway Patrols',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/alleyway-patrols-loop-sun-v2.ogg',
+      },
+      {
+        name: 'Mariner Patrols',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/mariner-patrols-loop-sun.ogg',
+      },
+      {
+        name: 'Military Patrols',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/sunderedisles/military-patrols-loop-sun.ogg',
+      },
+    ],
+  },
+  {
+    label: 'Outpost',
+    tracks: [
+      {
+        name: 'Outpost',
+        url: 'https://defi-kingdoms.b-cdn.net/game-audio/outpost/outpost-loop.ogg',
       },
     ],
   },
