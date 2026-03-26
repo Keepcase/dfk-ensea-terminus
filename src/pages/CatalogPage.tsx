@@ -160,14 +160,17 @@ export function CatalogPage() {
             value={search}
             onChange={(e) => {
               const val = e.target.value
-              setSearchParams((prev) => {
-                if (val) {
-                  prev.set('q', val)
-                } else {
-                  prev.delete('q')
-                }
-                return prev
-              }, { replace: true })
+              setSearchParams(
+                (prev) => {
+                  if (val) {
+                    prev.set('q', val)
+                  } else {
+                    prev.delete('q')
+                  }
+                  return prev
+                },
+                { replace: true },
+              )
             }}
             className="pl-10 bg-card/60 border-border/40 focus:border-primary/40 focus:ring-1 focus:ring-primary/20 placeholder:text-muted-foreground/40 h-10"
           />
@@ -179,14 +182,17 @@ export function CatalogPage() {
             <button
               key={cat.value}
               onClick={() => {
-                setSearchParams((prev) => {
-                  if (cat.value === 'all') {
-                    prev.delete('category')
-                  } else {
-                    prev.set('category', cat.value)
-                  }
-                  return prev
-                }, { replace: true })
+                setSearchParams(
+                  (prev) => {
+                    if (cat.value === 'all') {
+                      prev.delete('category')
+                    } else {
+                      prev.set('category', cat.value)
+                    }
+                    return prev
+                  },
+                  { replace: true },
+                )
               }}
               className={`text-[11px] sm:text-xs px-3 sm:px-3.5 py-1.5 rounded-full border transition-all duration-200 cursor-pointer ${
                 activeCategory === cat.value

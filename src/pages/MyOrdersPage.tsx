@@ -322,7 +322,11 @@ export function MyOrdersPage() {
                             </TableCell>
                             <TableCell
                               className="text-xs text-foreground/50 font-mono whitespace-nowrap"
-                              title={evt.timestamp ? new Date(evt.timestamp * 1000).toLocaleString() : undefined}
+                              title={
+                                evt.timestamp
+                                  ? new Date(evt.timestamp * 1000).toLocaleString()
+                                  : undefined
+                              }
                             >
                               {formatTimestamp(evt.timestamp)}
                             </TableCell>

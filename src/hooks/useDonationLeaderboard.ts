@@ -43,7 +43,10 @@ export function useDonationLeaderboard() {
     enabled: DONATION_ADDRESS !== '0x0000000000000000000000000000000000000000',
     staleTime: 30 * 60_000, // 30 minutes — leaderboard doesn't need to be real-time
     queryFn: async () => {
-      const donors = new Map<string, { totalWei: bigint; txCount: number; lastTimestamp: number; firstTimestamp: number }>()
+      const donors = new Map<
+        string,
+        { totalWei: bigint; txCount: number; lastTimestamp: number; firstTimestamp: number }
+      >()
 
       let pageToken: string | undefined
       let pages = 0

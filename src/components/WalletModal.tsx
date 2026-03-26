@@ -52,12 +52,8 @@ function WalletConnectorList({
   if (uniqueConnectors.length === 0 || hasOnlyGenericInjected) {
     return (
       <div className="text-center py-6 space-y-3">
-        <p className="text-muted-foreground text-sm">
-          No wallet extension detected
-        </p>
-        <p className="text-muted-foreground/60 text-xs">
-          Install a browser wallet to connect
-        </p>
+        <p className="text-muted-foreground text-sm">No wallet extension detected</p>
+        <p className="text-muted-foreground/60 text-xs">Install a browser wallet to connect</p>
       </div>
     )
   }

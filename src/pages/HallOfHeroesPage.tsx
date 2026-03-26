@@ -144,13 +144,21 @@ export function HallOfHeroesPage() {
                       </TableCell>
                       <TableCell
                         className="text-right text-xs text-foreground/40 font-mono hidden sm:table-cell"
-                        title={donor.firstTimestamp ? new Date(donor.firstTimestamp * 1000).toLocaleString() : undefined}
+                        title={
+                          donor.firstTimestamp
+                            ? new Date(donor.firstTimestamp * 1000).toLocaleString()
+                            : undefined
+                        }
                       >
                         {formatDate(donor.firstTimestamp)}
                       </TableCell>
                       <TableCell
                         className="text-right text-xs text-foreground/40 font-mono hidden sm:table-cell"
-                        title={donor.lastTimestamp ? new Date(donor.lastTimestamp * 1000).toLocaleString() : undefined}
+                        title={
+                          donor.lastTimestamp
+                            ? new Date(donor.lastTimestamp * 1000).toLocaleString()
+                            : undefined
+                        }
                       >
                         {formatDate(donor.lastTimestamp)}
                       </TableCell>
