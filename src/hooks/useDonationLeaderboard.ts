@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 const DONATION_ADDRESS = (
-  import.meta.env.VITE_DONATION_ADDRESS ?? '0x0000000000000000000000000000000000000000'
+  import.meta.env.VITE_DONATION_ADDRESS ?? '0x9F1768D32523D1f12726fCAF51e5ED44C40DAFa2'
 ).toLowerCase()
 
 import { GLACIER_BASE } from '../config/network'
