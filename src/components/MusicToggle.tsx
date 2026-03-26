@@ -234,7 +234,7 @@ export function MusicPlayer() {
           </div>
 
           {/* Track list */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-h-[50vh] overflow-y-auto -mx-1 px-1 pt-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-h-[70vh] overflow-y-auto -mx-1 px-1 pt-3">
             {REGIONS.map((region) => {
               const regionStartIndex = globalIndex
               const section = (
