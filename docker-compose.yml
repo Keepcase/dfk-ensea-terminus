@@ -1,0 +1,20 @@
+services:
+  ensea-terminus:
+    build: .
+    ports:
+      - "5173:5173"  # Vite dev server
+    volumes:
+      - ./:/workspace
+      - ./scripts/init-dfk-ensea-terminus.sh:/scripts/init-dfk-ensea-terminus.sh
+      # Persist node_modules inside the container (avoids OS-mismatch issues)
+      - bazaar_node_modules:/workspace/node_modules
+    entrypoint: ["/scripts/init-dfk-ensea-terminus.sh"]
+    environment:
+      - NODE_ENV=development
+      # Optional: override RPC endpoint
+      # - VITE_DFK_RPC_URL=https://subnets.avax.network/defi-kingdoms/dfk-chain/rpc
+      # Optional: your JEWEL donation address
+      # - VITE_DONATION_ADDRESS=0x...
+
+volumes:
+  bazaar_node_modules:
