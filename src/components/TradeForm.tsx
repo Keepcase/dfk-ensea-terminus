@@ -78,7 +78,7 @@ export function TradeForm({ token, bestAsk, bestBid }: TradeFormProps) {
   // Pre-fill price from orderbook when side changes
   useEffect(() => {
     if (hasUserEditedPrice) return
-    const suggestedPrice = bestAsk
+    const suggestedPrice = side === BUY ? bestAsk : bestBid
     if (suggestedPrice) {
       setPrice(decodePrice(suggestedPrice))
     }
@@ -359,12 +359,12 @@ export function TradeForm({ token, bestAsk, bestBid }: TradeFormProps) {
         <div className="space-y-1.5 py-2.5 px-3 rounded-lg bg-secondary/15 border border-border/15">
           <div className="flex justify-between items-center text-xs">
             <span className="text-muted-foreground/50">Subtotal</span>
-            <span className="font-mono text-foreground/70">~{estimatedTotal} JEWEL</span>
+            <span className="font-mono text-foreground/70">{estimatedTotal} JEWEL</span>
           </div>
           {feePercent !== null && feePercent !== undefined && (
             <div className="flex justify-between items-center text-xs">
               <span className="text-muted-foreground/50">Fee ({feePercent}%)</span>
-              <span className="font-mono text-foreground/70">~{estimatedFee ?? '...'} JEWEL</span>
+              <span className="font-mono text-foreground/70">{estimatedFee ?? '...'} JEWEL</span>
             </div>
           )}
           {totalWei && (
