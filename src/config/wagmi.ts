@@ -3,13 +3,7 @@ import { injected } from 'wagmi/connectors'
 import { dfkChain, dfkTestnet } from './chains'
 import { isTestnet } from './network'
 
-/**
- * wagmi config with EIP-6963 injected provider discovery.
- *
- * To add WalletConnect later, install `@wagmi/connectors` and add:
- *   import { walletConnect } from '@wagmi/connectors'
- *   connectors: [injected(), walletConnect({ projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID })]
- */
+/** wagmi config with EIP-6963 injected provider discovery. */
 export const config = isTestnet
   ? createConfig({
       chains: [dfkTestnet],
