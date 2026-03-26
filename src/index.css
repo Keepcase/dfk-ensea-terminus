@@ -1,0 +1,317 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@layer base {
+  .theme {
+    --font-heading: 'Cinzel', serif;
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  /* ── Shared tokens ── */
+  :root {
+    --radius: 0.625rem;
+    --color-gold: oklch(0.78 0.145 75);
+  }
+
+  /* ── Dark theme (default) ── */
+  :root, .dark {
+    --background: oklch(0.16 0.012 260);
+    --foreground: oklch(0.95 0.005 75);
+
+    --card: oklch(0.23 0.012 260);
+    --card-foreground: oklch(0.95 0.005 75);
+
+    --popover: oklch(0.24 0.011 260);
+    --popover-foreground: oklch(0.95 0.005 75);
+
+    --primary: oklch(0.80 0.15 75);
+    --primary-foreground: oklch(0.12 0.01 260);
+
+    --secondary: oklch(0.25 0.010 260);
+    --secondary-foreground: oklch(0.88 0.006 75);
+
+    --muted: oklch(0.25 0.010 260);
+    --muted-foreground: oklch(0.68 0.012 75);
+
+    --accent: oklch(0.74 0.13 68);
+    --accent-foreground: oklch(0.12 0.01 260);
+
+    --destructive: oklch(0.62 0.20 25);
+
+    --border: oklch(0.34 0.012 260);
+    --input: oklch(0.28 0.011 260);
+    --ring: oklch(0.80 0.15 75);
+
+    --chart-1: oklch(0.80 0.15 75);
+    --chart-2: oklch(0.68 0.16 155);
+    --chart-3: oklch(0.62 0.20 25);
+    --chart-4: oklch(0.68 0.012 75);
+    --chart-5: oklch(0.72 0.12 210);
+
+    --color-buy: oklch(0.74 0.17 155);
+    --color-sell: oklch(0.68 0.20 25);
+    --color-surface-elevated: oklch(0.24 0.013 260);
+  }
+
+  /* ── Light theme — warm parchment ── */
+  .light {
+    --background: oklch(0.96 0.008 80);
+    --foreground: oklch(0.18 0.015 265);
+
+    --card: oklch(0.99 0.004 80);
+    --card-foreground: oklch(0.18 0.015 265);
+
+    --popover: oklch(0.98 0.005 80);
+    --popover-foreground: oklch(0.18 0.015 265);
+
+    --primary: oklch(0.55 0.14 55);
+    --primary-foreground: oklch(0.98 0.004 80);
+
+    --secondary: oklch(0.93 0.008 80);
+    --secondary-foreground: oklch(0.30 0.015 265);
+
+    --muted: oklch(0.93 0.008 80);
+    --muted-foreground: oklch(0.48 0.015 265);
+
+    --accent: oklch(0.55 0.14 55);
+    --accent-foreground: oklch(0.98 0.004 80);
+
+    --destructive: oklch(0.55 0.22 25);
+
+    --border: oklch(0.88 0.010 80);
+    --input: oklch(0.91 0.008 80);
+    --ring: oklch(0.55 0.14 55);
+
+    --chart-1: oklch(0.55 0.14 55);
+    --chart-2: oklch(0.50 0.16 155);
+    --chart-3: oklch(0.55 0.22 25);
+    --chart-4: oklch(0.48 0.015 265);
+    --chart-5: oklch(0.55 0.12 210);
+
+    --color-buy: oklch(0.48 0.17 155);
+    --color-sell: oklch(0.52 0.22 25);
+    --color-gold: oklch(0.55 0.14 55);
+    --color-surface-elevated: oklch(0.97 0.006 80);
+  }
+}
+
+/* ── Hide scrollbar but keep scrolling ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Theme switch ── */
+.theme-switch {
+  position: relative;
+  width: 2.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: var(--input);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.theme-switch[data-checked] {
+  background-color: var(--primary);
+}
+.theme-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 9999px;
+  background-color: var(--background);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.theme-switch[data-checked] .theme-switch-thumb {
+  transform: translateX(1rem);
+}
+
+/* ── Buy/Sell active buttons ── */
+.buy-btn-active {
+  background-color: var(--color-buy) !important;
+  color: var(--background) !important;
+  border-color: var(--color-buy) !important;
+}
+.sell-btn-active {
+  background-color: var(--color-sell) !important;
+  color: var(--background) !important;
+  border-color: var(--color-sell) !important;
+}
+
+/* ── Filter pill active state (inverted) ── */
+.filter-pill-active {
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
+  border-color: var(--foreground) !important;
+  font-weight: 600;
+}
+
+/* ── Opaque overlays (sheet, drawer, dropdown) ── */
+[data-slot="sheet-content"],
+[data-slot="drawer-content"],
+[data-slot="dropdown-menu-content"] {
+  background-color: var(--background) !important;
+}
+
+/* ── Body backgrounds ── */
+@layer base {
+  body {
+    color: var(--foreground);
+  }
+
+  /* Dark body */
+  :root body, .dark body {
+    background-color: oklch(0.16 0.012 260);
+    background-image:
+      radial-gradient(ellipse at 15% 0%, oklch(0.21 0.025 260 / 0.4), transparent 55%),
+      radial-gradient(ellipse at 85% 100%, oklch(0.19 0.02 75 / 0.08), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  /* Light body */
+  .light body {
+    background-color: oklch(0.96 0.008 80);
+    background-image:
+      radial-gradient(ellipse at 15% 0%, oklch(0.94 0.012 75 / 0.4), transparent 55%),
+      radial-gradient(ellipse at 85% 100%, oklch(0.92 0.015 55 / 0.15), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  /* Noise texture — works on both themes */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none;
+  }
+}
+
+/* ── Marquee animation ── */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  animation: marquee 8s linear infinite;
+}
+
+/* ── Utility classes ── */
+@layer utilities {
+  .font-heading {
+    font-family: 'Cinzel', serif;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+  .text-buy {
+    color: var(--color-buy);
+  }
+  .text-sell {
+    color: var(--color-sell);
+  }
+  .text-gold {
+    color: var(--color-gold);
+  }
+
+  .glow-gold {
+    box-shadow:
+      0 0 24px oklch(0.78 0.145 75 / 0.12),
+      0 0 4px oklch(0.78 0.145 75 / 0.06),
+      inset 0 1px 0 oklch(1 0 0 / 0.03);
+  }
+  .light .glow-gold {
+    box-shadow:
+      0 0 20px oklch(0.55 0.14 55 / 0.10),
+      0 0 4px oklch(0.55 0.14 55 / 0.05);
+  }
+
+  .border-gold {
+    border-color: oklch(0.78 0.145 75 / 0.35);
+  }
+
+  /* Glassmorphism — adapts to theme */
+  .glass {
+    background: oklch(0.19 0.012 260 / 0.85);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  }
+  .light .glass {
+    background: oklch(0.98 0.004 80 / 0.88);
+    backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  }
+
+  .inner-glow-gold {
+    box-shadow: inset 0 0 12px oklch(0.78 0.145 75 / 0.08);
+  }
+
+  .depth-buy {
+    background: linear-gradient(90deg, oklch(0.70 0.17 155 / 0.25), oklch(0.70 0.17 155 / 0.08));
+  }
+  .depth-sell {
+    background: linear-gradient(90deg, oklch(0.62 0.20 25 / 0.25), oklch(0.62 0.20 25 / 0.08));
+  }
+}
+
+/* ── Animations ── */
+@layer utilities {
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.4s ease-out both;
+  }
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--secondary) 25%,
+      var(--border) 50%,
+      var(--secondary) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+}
+
+/* ── Custom scrollbar ── */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.38 0.012 265);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.45 0.012 265);
+  }
+  .light ::-webkit-scrollbar-thumb {
+    background: oklch(0.80 0.010 80);
+  }
+  .light ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.72 0.010 80);
+  }
+}
