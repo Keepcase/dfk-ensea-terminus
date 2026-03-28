@@ -4,6 +4,7 @@ import { CatalogPage } from './pages/CatalogPage'
 import { OrderbookPage } from './pages/OrderbookPage'
 import { MyOrdersPage } from './pages/MyOrdersPage'
 import { HallOfHeroesPage } from './pages/HallOfHeroesPage'
+import { MyHeroesPage } from './pages/MyHeroesPage'
 
 export function App() {
   return (
@@ -14,6 +15,7 @@ export function App() {
           <Route path="/item/:symbol" element={<OrderbookPage />} />
           <Route path="/my-orders" element={<MyOrdersPage />} />
           <Route path="/hall-of-heroes" element={<HallOfHeroesPage />} />
+          <Route path="/my-heroes" element={<MyHeroesPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

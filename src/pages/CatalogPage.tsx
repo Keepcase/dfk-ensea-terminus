@@ -129,11 +129,21 @@ export function CatalogPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
     >
-      {/* Hero */}
+      {/* Header */}
       <div className="mb-6 sm:mb-10">
-        <h1 className="font-heading text-2xl sm:text-3xl font-semibold tracking-[0.06em] text-foreground">
-          The Bazaar
-        </h1>
+        <div className="flex items-center justify-between">
+          <h1 className="font-heading text-2xl sm:text-3xl font-semibold tracking-[0.06em] text-foreground">
+            The Bazaar
+          </h1>
+          {isConnected && (
+            <Link
+              to="/my-orders"
+              className="text-xs sm:text-sm text-muted-foreground/50 hover:text-foreground transition-colors"
+            >
+              My Orders &rarr;
+            </Link>
+          )}
+        </div>
         <p className="text-muted-foreground text-xs sm:text-sm mt-1 tracking-wide">
           {tokens.length} items available for trade on DFK Chain
         </p>

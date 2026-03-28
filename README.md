@@ -1,6 +1,6 @@
 # Ensea Terminus
 
-An open-source orderbook marketplace for [DeFi Kingdoms](https://x.com/DeFiKingdoms). Browse items, place buy/sell orders on the Bazaar, and manage open orders — all from your browser.
+Open-source community tools for [DeFi Kingdoms](https://x.com/DeFiKingdoms). Browse and trade items on the Bazaar, view your heroes with full stats and genetics, and track the Hall of Heroes leaderboard, all from your browser.
 
 No backend, no database. Pure client-side React app talking directly to DFK Chain.
 

@@ -28,13 +28,13 @@ export function Layout({ children }: { children: ReactNode }) {
 
   const navLinks = [
     { to: '/', label: 'Bazaar' },
-    { to: '/my-orders', label: 'My Orders' },
+    { to: '/my-heroes', label: 'My Heroes' },
     { to: '/hall-of-heroes', label: 'Hall of Heroes' },
   ]
 
   function isActive(to: string) {
     return to === '/'
-      ? location.pathname === '/' || location.pathname.startsWith('/item/')
+      ? location.pathname === '/' || location.pathname.startsWith('/item/') || location.pathname === '/my-orders'
       : location.pathname === to
   }
 
@@ -55,7 +55,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 Ensea Terminus
               </span>
               <span className="text-[9px] sm:text-[10px] text-muted-foreground/50 tracking-[0.12em] uppercase leading-none mt-0.5 hidden sm:block">
-                DFK Marketplace
+                DFK Community Tools
               </span>
             </div>
           </Link>
