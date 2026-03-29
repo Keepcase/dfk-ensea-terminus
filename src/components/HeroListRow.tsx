@@ -31,10 +31,16 @@ export function HeroListRow({ hero, onSelect }: HeroListRowProps) {
 
   return (
     <TableRow
-      className={cn('bg-background hover:bg-muted/50 transition-colors', onSelect && 'cursor-pointer')}
+      className={cn(
+        'bg-background hover:bg-muted/50 transition-colors',
+        onSelect && 'cursor-pointer',
+      )}
       onClick={() => onSelect?.(hero)}
     >
-      <TableCell className={cn('font-mono text-[11px] text-foreground/40 font-semibold', stickyClass)} style={stickyBg}>
+      <TableCell
+        className={cn('font-mono text-[11px] text-foreground/40 font-semibold', stickyClass)}
+        style={stickyBg}
+      >
         #{hero.id.toString()}
       </TableCell>
       <TableCell className="text-[12px] font-semibold text-foreground max-w-[10rem]">
@@ -47,7 +53,12 @@ export function HeroListRow({ hero, onSelect }: HeroListRowProps) {
       <TableCell className="text-[11px] text-muted-foreground/60">{subClassName}</TableCell>
       <TableCell className="font-mono text-[11px] text-center">{hero.level}</TableCell>
       <TableCell>
-        <span className={cn('text-[10px] font-bold px-1.5 py-0.5 rounded-full inline-block', rarityBadge)}>
+        <span
+          className={cn(
+            'text-[10px] font-bold px-1.5 py-0.5 rounded-full inline-block',
+            rarityBadge,
+          )}
+        >
           {rarityName}
         </span>
       </TableCell>
@@ -63,20 +74,20 @@ export function HeroListRow({ hero, onSelect }: HeroListRowProps) {
         <span className="flex items-center justify-center gap-0.5">
           {hero.summons}
           <span className="text-foreground/20">/</span>
-          {hero.generation === 0
-            ? <InfinityIcon className="w-3 h-3 inline" />
-            : hero.maxSummons
-          }
+          {hero.generation === 0 ? <InfinityIcon className="w-3 h-3 inline" /> : hero.maxSummons}
         </span>
       </TableCell>
       <TableCell className="font-mono text-[11px] text-foreground/50 text-center">
         {xpProgress.isMaxLevel
           ? 'MAX'
-          : `${xpProgress.current.toLocaleString()}/${xpProgress.needed.toLocaleString()}`
-        }
+          : `${xpProgress.current.toLocaleString()}/${xpProgress.needed.toLocaleString()}`}
       </TableCell>
-      <TableCell className="font-mono text-[11px] text-foreground/50 text-center">{hero.hp}</TableCell>
-      <TableCell className="font-mono text-[11px] text-foreground/50 text-center">{hero.mp}</TableCell>
+      <TableCell className="font-mono text-[11px] text-foreground/50 text-center">
+        {hero.hp}
+      </TableCell>
+      <TableCell className="font-mono text-[11px] text-foreground/50 text-center">
+        {hero.mp}
+      </TableCell>
     </TableRow>
   )
 }
@@ -87,7 +98,9 @@ export function HeroListHeader() {
   return (
     <TableHeader>
       <TableRow className="bg-background">
-        <TableHead className={cn(headClass, stickyClass)} style={stickyBg}>ID</TableHead>
+        <TableHead className={cn(headClass, stickyClass)} style={stickyBg}>
+          ID
+        </TableHead>
         <TableHead className={headClass}>Name</TableHead>
         <TableHead className={headClass}>G</TableHead>
         <TableHead className={headClass}>Class</TableHead>
@@ -113,20 +126,48 @@ export function HeroListRowSkeleton() {
       <TableCell className={stickyClass} style={stickyBg}>
         <div className="h-3 w-10 rounded bg-secondary/40 animate-pulse" />
       </TableCell>
-      <TableCell><div className="h-3 w-24 rounded bg-secondary/40 animate-pulse" /></TableCell>
-      <TableCell><div className="h-3 w-4 rounded bg-secondary/30 animate-pulse" /></TableCell>
-      <TableCell><div className="h-3 w-16 rounded bg-secondary/30 animate-pulse" /></TableCell>
-      <TableCell><div className="h-3 w-16 rounded bg-secondary/30 animate-pulse" /></TableCell>
-      <TableCell><div className="h-3 w-6 rounded bg-secondary/30 animate-pulse mx-auto" /></TableCell>
-      <TableCell><div className="h-4 w-14 rounded-full bg-secondary/30 animate-pulse" /></TableCell>
-      <TableCell><div className="h-3 w-6 rounded bg-secondary/20 animate-pulse mx-auto" /></TableCell>
-      <TableCell><div className="h-3 w-16 rounded bg-secondary/20 animate-pulse" /></TableCell>
-      <TableCell><div className="h-3 w-12 rounded bg-secondary/20 animate-pulse" /></TableCell>
-      <TableCell><div className="h-3 w-8 rounded bg-secondary/20 animate-pulse" /></TableCell>
-      <TableCell><div className="h-3 w-10 rounded bg-secondary/20 animate-pulse mx-auto" /></TableCell>
-      <TableCell><div className="h-3 w-16 rounded bg-secondary/20 animate-pulse mx-auto" /></TableCell>
-      <TableCell><div className="h-3 w-8 rounded bg-secondary/20 animate-pulse mx-auto" /></TableCell>
-      <TableCell><div className="h-3 w-8 rounded bg-secondary/20 animate-pulse mx-auto" /></TableCell>
+      <TableCell>
+        <div className="h-3 w-24 rounded bg-secondary/40 animate-pulse" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-4 rounded bg-secondary/30 animate-pulse" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-16 rounded bg-secondary/30 animate-pulse" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-16 rounded bg-secondary/30 animate-pulse" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-6 rounded bg-secondary/30 animate-pulse mx-auto" />
+      </TableCell>
+      <TableCell>
+        <div className="h-4 w-14 rounded-full bg-secondary/30 animate-pulse" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-6 rounded bg-secondary/20 animate-pulse mx-auto" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-16 rounded bg-secondary/20 animate-pulse" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-12 rounded bg-secondary/20 animate-pulse" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-8 rounded bg-secondary/20 animate-pulse" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-10 rounded bg-secondary/20 animate-pulse mx-auto" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-16 rounded bg-secondary/20 animate-pulse mx-auto" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-8 rounded bg-secondary/20 animate-pulse mx-auto" />
+      </TableCell>
+      <TableCell>
+        <div className="h-3 w-8 rounded bg-secondary/20 animate-pulse mx-auto" />
+      </TableCell>
     </TableRow>
   )
 }

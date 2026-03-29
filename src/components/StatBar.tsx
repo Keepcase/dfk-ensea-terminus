@@ -30,7 +30,15 @@ export function StatBar({
   return (
     <div className={cn('flex flex-col gap-1', className)}>
       <div className="flex items-center justify-between">
-        <span className={cn('text-sm uppercase tracking-wide cursor-default', labelColor ?? 'text-muted-foreground/60')} title={title}>{label}</span>
+        <span
+          className={cn(
+            'text-sm uppercase tracking-wide cursor-default',
+            labelColor ?? 'text-muted-foreground/60',
+          )}
+          title={title}
+        >
+          {label}
+        </span>
         <span className="font-mono text-base font-medium text-foreground/80">
           {displayValue ?? value}
         </span>

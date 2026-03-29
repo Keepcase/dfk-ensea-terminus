@@ -274,19 +274,19 @@ export const BAZAAR_ABI = [
 /** Hero NFT contract addresses per chain */
 export const HERO_ADDRESSES: Record<number, Address> = {
   53935: '0xEb9B61B145D6489Be575D3603F4a704810e143dF', // DFK Chain mainnet
-  335: '0x3bcaCBeAFefed260d877dbE36378008D4e714c8E',   // DFK Chain testnet
+  335: '0x3bcaCBeAFefed260d877dbE36378008D4e714c8E', // DFK Chain testnet
 }
 
 /** Hero Auction (sales) contract addresses per chain */
 export const HERO_AUCTION_ADDRESSES: Record<number, Address> = {
   53935: '0xc390fAA4C7f66E4D62E59C231D5beD32Ff77BEf0', // DFK Chain mainnet
-  335: '0xb9b4C20165a421E7208494A38a37679c7F334770',   // DFK Chain testnet
+  335: '0xb9b4C20165a421E7208494A38a37679c7F334770', // DFK Chain testnet
 }
 
 /** CRYSTAL power token addresses per chain */
 export const CRYSTAL_ADDRESSES: Record<number, Address> = {
   53935: '0x04b9dA42306B023f3572e106B11D82aAd9D32EBb', // DFK Chain mainnet
-  335: '0xa5c47B4bEb35215fB0CF0Ea6516F9921591c3aCE',   // DFK Chain testnet
+  335: '0xa5c47B4bEb35215fB0CF0Ea6516F9921591c3aCE', // DFK Chain testnet
 }
 
 /**
@@ -344,38 +344,42 @@ export const HERO_AUCTION_ABI = [
     type: 'function',
     stateMutability: 'view',
     inputs: [{ name: '_tokenId', type: 'uint256' }],
-    outputs: [{
-      type: 'tuple',
-      components: [
-        { name: 'seller', type: 'address' },
-        { name: 'tokenId', type: 'uint256' },
-        { name: 'startingPrice', type: 'uint128' },
-        { name: 'endingPrice', type: 'uint128' },
-        { name: 'duration', type: 'uint64' },
-        { name: 'startedAt', type: 'uint64' },
-        { name: 'winner', type: 'address' },
-        { name: 'open', type: 'bool' },
-      ],
-    }],
+    outputs: [
+      {
+        type: 'tuple',
+        components: [
+          { name: 'seller', type: 'address' },
+          { name: 'tokenId', type: 'uint256' },
+          { name: 'startingPrice', type: 'uint128' },
+          { name: 'endingPrice', type: 'uint128' },
+          { name: 'duration', type: 'uint64' },
+          { name: 'startedAt', type: 'uint64' },
+          { name: 'winner', type: 'address' },
+          { name: 'open', type: 'bool' },
+        ],
+      },
+    ],
   },
   {
     name: 'getAuctions',
     type: 'function',
     stateMutability: 'view',
     inputs: [{ name: '_tokenIds', type: 'uint256[]' }],
-    outputs: [{
-      type: 'tuple[]',
-      components: [
-        { name: 'seller', type: 'address' },
-        { name: 'tokenId', type: 'uint256' },
-        { name: 'startingPrice', type: 'uint128' },
-        { name: 'endingPrice', type: 'uint128' },
-        { name: 'duration', type: 'uint64' },
-        { name: 'startedAt', type: 'uint64' },
-        { name: 'winner', type: 'address' },
-        { name: 'open', type: 'bool' },
-      ],
-    }],
+    outputs: [
+      {
+        type: 'tuple[]',
+        components: [
+          { name: 'seller', type: 'address' },
+          { name: 'tokenId', type: 'uint256' },
+          { name: 'startingPrice', type: 'uint128' },
+          { name: 'endingPrice', type: 'uint128' },
+          { name: 'duration', type: 'uint64' },
+          { name: 'startedAt', type: 'uint64' },
+          { name: 'winner', type: 'address' },
+          { name: 'open', type: 'bool' },
+        ],
+      },
+    ],
   },
   {
     name: 'getUserAuctions',

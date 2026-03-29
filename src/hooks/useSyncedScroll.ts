@@ -14,7 +14,9 @@ export function useSyncedScroll<T extends HTMLElement>() {
     if (syncing.current) return
     syncing.current = true
     target.scrollLeft = source.scrollLeft
-    requestAnimationFrame(() => { syncing.current = false })
+    requestAnimationFrame(() => {
+      syncing.current = false
+    })
   }, [])
 
   useEffect(() => {

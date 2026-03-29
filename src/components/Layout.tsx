@@ -34,7 +34,9 @@ export function Layout({ children }: { children: ReactNode }) {
 
   function isActive(to: string) {
     return to === '/'
-      ? location.pathname === '/' || location.pathname.startsWith('/item/') || location.pathname === '/my-orders'
+      ? location.pathname === '/' ||
+          location.pathname.startsWith('/item/') ||
+          location.pathname === '/my-orders'
       : location.pathname === to
   }
 

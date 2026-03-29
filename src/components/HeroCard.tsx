@@ -8,7 +8,13 @@ import { resolveStatTrait, resolveVisualTrait } from '../lib/gene-display'
 import { getRarityBadge, getRarityHover } from '../lib/rarity'
 
 /** Compact progress bar with label */
-function MiniBar({ value, max, color, label, display }: {
+function MiniBar({
+  value,
+  max,
+  color,
+  label,
+  display,
+}: {
   value: number
   max: number
   color: string
@@ -20,9 +26,14 @@ function MiniBar({ value, max, color, label, display }: {
     <div className="flex items-center gap-1.5">
       <span className="text-[10px] text-muted-foreground/50 w-[3.2rem] shrink-0">{label}</span>
       <div className="h-1.5 flex-1 rounded-full bg-black/5 dark:bg-white/5 overflow-hidden">
-        <div className={cn('h-full rounded-full transition-all', color)} style={{ width: `${pct}%` }} />
+        <div
+          className={cn('h-full rounded-full transition-all', color)}
+          style={{ width: `${pct}%` }}
+        />
       </div>
-      <span className="font-mono text-[11px] text-foreground/60 min-w-[2.5rem] text-right shrink-0">{display}</span>
+      <span className="font-mono text-[11px] text-foreground/60 min-w-[2.5rem] text-right shrink-0">
+        {display}
+      </span>
     </div>
   )
 }
@@ -73,7 +84,10 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
             {gender === 'Female' ? 'Ms.' : 'Mr.'}
           </span>
           <span className="text-2xl font-heading font-bold text-foreground/20 leading-none">
-            {heroName.split(' ').map(n => n[0]).join('.') + '.'}
+            {heroName
+              .split(' ')
+              .map((n) => n[0])
+              .join('.') + '.'}
           </span>
         </div>
 
@@ -82,10 +96,11 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
           <p className="text-[13px] font-semibold text-foreground leading-tight flex items-center gap-1">
             <span className="truncate">{heroName}</span>
             <span className="shrink-0" title={gender}>
-              {gender === 'Female'
-                ? <Venus className="w-3 h-3 text-muted-foreground/50" />
-                : <Mars className="w-3 h-3 text-muted-foreground/50" />
-              }
+              {gender === 'Female' ? (
+                <Venus className="w-3 h-3 text-muted-foreground/50" />
+              ) : (
+                <Mars className="w-3 h-3 text-muted-foreground/50" />
+              )}
             </span>
           </p>
           <p className="text-[10px] text-muted-foreground/55 leading-snug mt-0.5 truncate">
@@ -104,15 +119,10 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
           <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-zinc-200 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
             Lvl {hero.level}
           </span>
-          <span className={cn(
-            'text-[10px] font-bold px-2 py-0.5 rounded-full',
-            rarityBadge,
-          )}>
+          <span className={cn('text-[10px] font-bold px-2 py-0.5 rounded-full', rarityBadge)}>
             {rarityName}
           </span>
-          {hero.shiny && (
-            <Sparkles className="w-3.5 h-3.5 text-yellow-500 dark:text-yellow-400" />
-          )}
+          {hero.shiny && <Sparkles className="w-3.5 h-3.5 text-yellow-500 dark:text-yellow-400" />}
         </div>
 
         {/* Stat bars */}
@@ -120,9 +130,18 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
           <MiniBar
             label="Summons"
             value={hero.generation === 0 ? 0 : hero.summons}
-            max={hero.generation === 0 ? 1 : (hero.maxSummons || 1)}
+            max={hero.generation === 0 ? 1 : hero.maxSummons || 1}
             color="bg-pink-500 dark:bg-pink-400"
-            display={<>{hero.summons}/{hero.generation === 0 ? <Infinity className="w-3.5 h-3.5 inline" /> : hero.maxSummons}</>}
+            display={
+              <>
+                {hero.summons}/
+                {hero.generation === 0 ? (
+                  <Infinity className="w-3.5 h-3.5 inline" />
+                ) : (
+                  hero.maxSummons
+                )}
+              </>
+            }
           />
           <MiniBar
             label="Stamina"
@@ -146,7 +165,9 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
             <Heart className="w-3 h-3 text-red-500 fill-red-500" />
             <span className="font-mono text-[10px] text-foreground/50">{hero.hp}</span>
           </div>
-          <span className="font-mono text-[10px] text-muted-foreground/25">#{hero.id.toString()}</span>
+          <span className="font-mono text-[10px] text-muted-foreground/25">
+            #{hero.id.toString()}
+          </span>
           <div className="flex items-center gap-1">
             <Droplet className="w-3 h-3 text-blue-500 fill-blue-500" />
             <span className="font-mono text-[10px] text-foreground/50">{hero.mp}</span>

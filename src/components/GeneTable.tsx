@@ -33,11 +33,21 @@ export function GeneTable({ type, statGenes, visualGenes, isFemale }: GeneTableP
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border/20">
-            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 pr-3 font-normal">Trait</th>
-            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 px-2 font-normal">D</th>
-            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 px-2 font-normal">R1</th>
-            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 px-2 font-normal">R2</th>
-            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 px-2 font-normal">R3</th>
+            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 pr-3 font-normal">
+              Trait
+            </th>
+            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 px-2 font-normal">
+              D
+            </th>
+            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 px-2 font-normal">
+              R1
+            </th>
+            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 px-2 font-normal">
+              R2
+            </th>
+            <th className="text-left text-xs text-muted-foreground/40 uppercase tracking-wider py-1.5 px-2 font-normal">
+              R3
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -52,7 +62,9 @@ export function GeneTable({ type, statGenes, visualGenes, isFemale }: GeneTableP
                     <td className="text-sm text-muted-foreground/60 py-1.5 pr-3 whitespace-nowrap">
                       {STAT_TRAIT_LABELS[traitKey]}
                     </td>
-                    <td className={cn('text-sm font-medium py-1.5 px-2 whitespace-nowrap', tierStyle)}>
+                    <td
+                      className={cn('text-sm font-medium py-1.5 px-2 whitespace-nowrap', tierStyle)}
+                    >
                       {resolved.d}
                     </td>
                     <td className="text-sm text-muted-foreground/40 py-1.5 px-2 whitespace-nowrap">
@@ -80,7 +92,10 @@ export function GeneTable({ type, statGenes, visualGenes, isFemale }: GeneTableP
                       <td className="text-sm text-foreground/60 py-1.5 px-2 whitespace-nowrap">
                         <span className="inline-flex items-center gap-1">
                           {isColor && resolved.d.startsWith('#') && (
-                            <span className="inline-block w-3 h-3 rounded-sm border border-border/30 shrink-0" style={{ backgroundColor: resolved.d }} />
+                            <span
+                              className="inline-block w-3 h-3 rounded-sm border border-border/30 shrink-0"
+                              style={{ backgroundColor: resolved.d }}
+                            />
                           )}
                           {resolved.d}
                         </span>
@@ -88,7 +103,10 @@ export function GeneTable({ type, statGenes, visualGenes, isFemale }: GeneTableP
                       <td className="text-sm text-muted-foreground/40 py-1.5 px-2 whitespace-nowrap">
                         <span className="inline-flex items-center gap-1">
                           {isColor && resolved.r1.startsWith('#') && (
-                            <span className="inline-block w-2.5 h-2.5 rounded-sm border border-border/20 shrink-0" style={{ backgroundColor: resolved.r1 }} />
+                            <span
+                              className="inline-block w-2.5 h-2.5 rounded-sm border border-border/20 shrink-0"
+                              style={{ backgroundColor: resolved.r1 }}
+                            />
                           )}
                           {resolved.r1}
                         </span>
@@ -96,7 +114,10 @@ export function GeneTable({ type, statGenes, visualGenes, isFemale }: GeneTableP
                       <td className="text-sm text-muted-foreground/40 py-1.5 px-2 whitespace-nowrap">
                         <span className="inline-flex items-center gap-1">
                           {isColor && resolved.r2.startsWith('#') && (
-                            <span className="inline-block w-2.5 h-2.5 rounded-sm border border-border/20 shrink-0" style={{ backgroundColor: resolved.r2 }} />
+                            <span
+                              className="inline-block w-2.5 h-2.5 rounded-sm border border-border/20 shrink-0"
+                              style={{ backgroundColor: resolved.r2 }}
+                            />
                           )}
                           {resolved.r2}
                         </span>
@@ -104,7 +125,10 @@ export function GeneTable({ type, statGenes, visualGenes, isFemale }: GeneTableP
                       <td className="text-sm text-muted-foreground/40 py-1.5 px-2 whitespace-nowrap">
                         <span className="inline-flex items-center gap-1">
                           {isColor && resolved.r3.startsWith('#') && (
-                            <span className="inline-block w-2.5 h-2.5 rounded-sm border border-border/20 shrink-0" style={{ backgroundColor: resolved.r3 }} />
+                            <span
+                              className="inline-block w-2.5 h-2.5 rounded-sm border border-border/20 shrink-0"
+                              style={{ backgroundColor: resolved.r3 }}
+                            />
                           )}
                           {resolved.r3}
                         </span>

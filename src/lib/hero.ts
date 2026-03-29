@@ -76,18 +76,38 @@ const MAX_LEVEL = 20
 /** XP cap per level — max XP a hero accumulates before being eligible to level up.
  * Derived from on-chain data (max XP observed across 1000+ heroes per level). */
 const XP_CAP: Record<number, number> = {
-  1: 2000, 2: 3000, 3: 4000, 4: 5000, 5: 6000,
-  6: 8000, 7: 10000, 8: 12000, 9: 16000, 10: 20000,
-  11: 24000, 12: 28000, 13: 32000, 14: 36000, 15: 40000,
-  16: 45000, 17: 50000, 18: 55000, 19: 60000, 20: 65000,
+  1: 2000,
+  2: 3000,
+  3: 4000,
+  4: 5000,
+  5: 6000,
+  6: 8000,
+  7: 10000,
+  8: 12000,
+  9: 16000,
+  10: 20000,
+  11: 24000,
+  12: 28000,
+  13: 32000,
+  14: 36000,
+  15: 40000,
+  16: 45000,
+  17: 50000,
+  18: 55000,
+  19: 60000,
+  20: 65000,
 }
 
 /** Get XP progress for current level. */
-export function getXpProgress(hero: HeroDetails): { current: number; needed: number; isMaxLevel: boolean } {
+export function getXpProgress(hero: HeroDetails): {
+  current: number
+  needed: number
+  isMaxLevel: boolean
+} {
   if (hero.level >= MAX_LEVEL) {
     return { current: hero.xp, needed: hero.xp, isMaxLevel: true }
   }
-  const needed = XP_CAP[hero.level] ?? (hero.level * 4000)
+  const needed = XP_CAP[hero.level] ?? hero.level * 4000
   return { current: hero.xp, needed, isMaxLevel: false }
 }
 

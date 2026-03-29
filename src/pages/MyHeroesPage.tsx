@@ -111,7 +111,8 @@ export function MyHeroesPage() {
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
   const [detailHero, setDetailHero] = useState<HeroDetails | null>(null)
   const [detailOpen, setDetailOpen] = useState(false)
-  const { topRef: tableTopScrollRef, contentRef: tableContentRef } = useSyncedScroll<HTMLDivElement>()
+  const { topRef: tableTopScrollRef, contentRef: tableContentRef } =
+    useSyncedScroll<HTMLDivElement>()
   const [viewMode, setViewMode] = useState<'grid' | 'list'>(() => {
     try {
       const saved = localStorage.getItem('ensea-terminus-hero-view')
@@ -124,7 +125,11 @@ export function MyHeroesPage() {
   function toggleView() {
     const next = viewMode === 'grid' ? 'list' : 'grid'
     setViewMode(next)
-    try { localStorage.setItem('ensea-terminus-hero-view', next) } catch { /* storage unavailable */ }
+    try {
+      localStorage.setItem('ensea-terminus-hero-view', next)
+    } catch {
+      /* storage unavailable */
+    }
   }
 
   const { data: allHeroIds = [], isLoading: isLoadingIds } = useUserHeroes()
@@ -137,9 +142,7 @@ export function MyHeroesPage() {
       ? allHeroIds
       : allHeroIds.filter((id) => id.toString().includes(search.trim()))
     if (sortField === 'id') {
-      return [...ids].sort((a, b) =>
-        sortOrder === 'asc' ? (a < b ? -1 : 1) : (a > b ? -1 : 1),
-      )
+      return [...ids].sort((a, b) => (sortOrder === 'asc' ? (a < b ? -1 : 1) : a > b ? -1 : 1))
     }
     return ids
   }, [allHeroIds, search, sortField, sortOrder])
@@ -156,12 +159,28 @@ export function MyHeroesPage() {
     return [...allDetails].sort((a, b) => {
       let aVal: number, bVal: number
       switch (sortField) {
-        case 'gen': aVal = a.generation; bVal = b.generation; break
-        case 'rarity': aVal = a.rarity; bVal = b.rarity; break
-        case 'level': aVal = a.level; bVal = b.level; break
-        case 'summons': aVal = a.summons; bVal = b.summons; break
-        case 'xp': aVal = a.xp; bVal = b.xp; break
-        default: return 0
+        case 'gen':
+          aVal = a.generation
+          bVal = b.generation
+          break
+        case 'rarity':
+          aVal = a.rarity
+          bVal = b.rarity
+          break
+        case 'level':
+          aVal = a.level
+          bVal = b.level
+          break
+        case 'summons':
+          aVal = a.summons
+          bVal = b.summons
+          break
+        case 'xp':
+          aVal = a.xp
+          bVal = b.xp
+          break
+        default:
+          return 0
       }
       return sortOrder === 'asc' ? aVal - bVal : bVal - aVal
     })
@@ -191,10 +210,12 @@ export function MyHeroesPage() {
     return pageDetails
   }, [needsGlobalSort, sortedAllDetails, pageDetails, safePage])
 
-  const isLoading = isLoadingIds
-    || (needsGlobalSort ? (isLoadingAll && allDetails.length === 0) : (pageIds.length > 0 && isLoadingPage))
+  const isLoading =
+    isLoadingIds ||
+    (needsGlobalSort
+      ? isLoadingAll && allDetails.length === 0
+      : pageIds.length > 0 && isLoadingPage)
   const isSortLoading = needsGlobalSort && isLoadingAll && allDetails.length === 0
-
 
   function handleSelect(hero: HeroDetails) {
     setDetailHero(hero)
@@ -261,7 +282,10 @@ export function MyHeroesPage() {
             <div className="flex items-center gap-2 shrink-0">
               <select
                 value={sortField}
-                onChange={(e) => { setSortField(e.target.value as SortField); setPage(0) }}
+                onChange={(e) => {
+                  setSortField(e.target.value as SortField)
+                  setPage(0)
+                }}
                 className="h-10 px-2 rounded-md border border-border/40 bg-card/60 text-xs text-foreground/80 focus:border-primary/40 focus:outline-none cursor-pointer"
               >
                 <option value="id">ID</option>
@@ -273,7 +297,10 @@ export function MyHeroesPage() {
               </select>
               <select
                 value={sortOrder}
-                onChange={(e) => { setSortOrder(e.target.value as SortOrder); setPage(0) }}
+                onChange={(e) => {
+                  setSortOrder(e.target.value as SortOrder)
+                  setPage(0)
+                }}
                 className="h-10 px-2 rounded-md border border-border/40 bg-card/60 text-xs text-foreground/80 focus:border-primary/40 focus:outline-none cursor-pointer"
               >
                 <option value="asc">Asc</option>
@@ -288,10 +315,11 @@ export function MyHeroesPage() {
                   'border-border/40 bg-card/60 text-muted-foreground hover:text-foreground hover:border-border/70',
                 )}
               >
-                {viewMode === 'grid'
-                  ? <List className="w-4 h-4" />
-                  : <LayoutGrid className="w-4 h-4" />
-                }
+                {viewMode === 'grid' ? (
+                  <List className="w-4 h-4" />
+                ) : (
+                  <LayoutGrid className="w-4 h-4" />
+                )}
               </button>
             </div>
           </div>
@@ -315,7 +343,11 @@ export function MyHeroesPage() {
             <>
               {/* Pagination — top */}
               <div className="mb-4">
-                <PaginationControls page={safePage} totalPages={totalPages} onPageChange={setPage} />
+                <PaginationControls
+                  page={safePage}
+                  totalPages={totalPages}
+                  onPageChange={setPage}
+                />
               </div>
 
               <AnimatePresence mode="wait">
@@ -329,15 +361,11 @@ export function MyHeroesPage() {
                     className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3"
                   >
                     {isLoading
-                      ? Array.from({ length: Math.min(PAGE_SIZE, pageIds.length || PAGE_SIZE) }).map(
-                          (_, i) => <SkeletonCard key={i} />,
-                        )
+                      ? Array.from({
+                          length: Math.min(PAGE_SIZE, pageIds.length || PAGE_SIZE),
+                        }).map((_, i) => <SkeletonCard key={i} />)
                       : displayHeroes.map((hero) => (
-                          <HeroCard
-                            key={hero.id.toString()}
-                            hero={hero}
-                            onSelect={handleSelect}
-                          />
+                          <HeroCard key={hero.id.toString()} hero={hero} onSelect={handleSelect} />
                         ))}
                   </motion.div>
                 ) : (
@@ -349,17 +377,25 @@ export function MyHeroesPage() {
                     transition={{ duration: 0.2 }}
                   >
                     {/* Top scrollbar mirror */}
-                    <div ref={tableTopScrollRef} className="overflow-x-auto" style={{ height: '12px' }}>
+                    <div
+                      ref={tableTopScrollRef}
+                      className="overflow-x-auto"
+                      style={{ height: '12px' }}
+                    >
                       <div className="min-w-[900px]" style={{ height: '1px' }} />
                     </div>
-                    <div ref={tableContentRef} className="overflow-x-auto rounded-lg" style={{ backgroundColor: 'var(--background)' }}>
+                    <div
+                      ref={tableContentRef}
+                      className="overflow-x-auto rounded-lg"
+                      style={{ backgroundColor: 'var(--background)' }}
+                    >
                       <Table className="min-w-[900px] border-separate border-spacing-0">
                         <HeroListHeader />
                         <TableBody>
                           {isLoading
-                            ? Array.from({ length: Math.min(PAGE_SIZE, pageIds.length || PAGE_SIZE) }).map(
-                                (_, i) => <HeroListRowSkeleton key={i} />,
-                              )
+                            ? Array.from({
+                                length: Math.min(PAGE_SIZE, pageIds.length || PAGE_SIZE),
+                              }).map((_, i) => <HeroListRowSkeleton key={i} />)
                             : displayHeroes.map((hero) => (
                                 <HeroListRow
                                   key={hero.id.toString()}
@@ -376,7 +412,11 @@ export function MyHeroesPage() {
 
               {/* Pagination — bottom */}
               <div className="mt-8">
-                <PaginationControls page={safePage} totalPages={totalPages} onPageChange={setPage} />
+                <PaginationControls
+                  page={safePage}
+                  totalPages={totalPages}
+                  onPageChange={setPage}
+                />
               </div>
             </>
           )}
@@ -384,11 +424,7 @@ export function MyHeroesPage() {
       )}
 
       {/* Hero detail sheet/drawer */}
-      <HeroDetailSheet
-        hero={detailHero}
-        open={detailOpen}
-        onOpenChange={setDetailOpen}
-      />
+      <HeroDetailSheet hero={detailHero} open={detailOpen} onOpenChange={setDetailOpen} />
     </motion.div>
   )
 }

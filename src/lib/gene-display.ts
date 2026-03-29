@@ -109,10 +109,7 @@ function lookupGene(map: Record<number, string>, value: number): string {
 }
 
 /** Resolve a stat gene slot to human-readable names */
-export function resolveStatTrait(
-  traitName: keyof StatGenes,
-  slot: GeneSlot,
-): ResolvedGeneSlot {
+export function resolveStatTrait(traitName: keyof StatGenes, slot: GeneSlot): ResolvedGeneSlot {
   const map = STAT_TRAIT_MAPS[traitName]
   return {
     d: lookupGene(map, slot.d),
@@ -123,10 +120,7 @@ export function resolveStatTrait(
 }
 
 /** Resolve a visual gene slot to human-readable names */
-export function resolveVisualTrait(
-  traitName: keyof VisualGenes,
-  slot: GeneSlot,
-): ResolvedGeneSlot {
+export function resolveVisualTrait(traitName: keyof VisualGenes, slot: GeneSlot): ResolvedGeneSlot {
   // Unknown traits have no official mapping — show raw gene values
   if (traitName === 'visualUnknown1' || traitName === 'visualUnknown2') {
     return {

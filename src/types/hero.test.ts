@@ -88,7 +88,9 @@ describe('HERO_V3_OFFSETS', () => {
 
   it('secondary growth block is offset from primary by exactly 14 words', () => {
     expect(HERO_V3_OFFSETS.secondaryGrowthStrength - HERO_V3_OFFSETS.primaryGrowthStrength).toBe(14)
-    expect(HERO_V3_OFFSETS.secondaryGrowthDexterity - HERO_V3_OFFSETS.primaryGrowthDexterity).toBe(14)
+    expect(HERO_V3_OFFSETS.secondaryGrowthDexterity - HERO_V3_OFFSETS.primaryGrowthDexterity).toBe(
+      14,
+    )
   })
 
   // -------------------------------------------------------------------------
