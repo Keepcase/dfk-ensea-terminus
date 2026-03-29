@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { Heart, Droplet, Mars, Venus, Sparkles, Infinity } from 'lucide-react'
+import { Heart, Droplet, Mars, Venus, Sparkles, Infinity as InfinityIcon } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import { getHeroName, getStatScore, getXpProgress, getCurrentStamina } from '../lib/hero'
@@ -185,7 +185,7 @@ function HeroDetailContent({ hero }: { hero: HeroDetails }) {
                 <>
                   {hero.summons} /{' '}
                   {hero.generation === 0 ? (
-                    <Infinity className="w-5 h-5 inline" />
+                    <InfinityIcon className="w-5 h-5 inline" />
                   ) : (
                     hero.maxSummons
                   )}

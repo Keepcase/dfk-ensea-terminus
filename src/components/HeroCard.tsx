@@ -1,4 +1,4 @@
-import { Heart, Droplet, Mars, Venus, Sparkles, Infinity } from 'lucide-react'
+import { Heart, Droplet, Mars, Venus, Sparkles, Infinity as InfinityIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { HeroDetails } from '../types/hero'
 import { HERO_RARITIES } from '../types/hero'
@@ -136,7 +136,7 @@ export function HeroCard({ hero, onSelect }: HeroCardProps) {
               <>
                 {hero.summons}/
                 {hero.generation === 0 ? (
-                  <Infinity className="w-3.5 h-3.5 inline" />
+                  <InfinityIcon className="w-3.5 h-3.5 inline" />
                 ) : (
                   hero.maxSummons
                 )}
