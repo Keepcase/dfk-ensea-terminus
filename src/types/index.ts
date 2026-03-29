@@ -1,5 +1,7 @@
 import type { Address } from 'viem'
 
+export * from './hero'
+
 /** Order side: 0 = BUY, 1 = SELL */
 export type OrderSide = 0 | 1
 

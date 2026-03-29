@@ -11,10 +11,14 @@ export default defineConfig({
     },
   },
   build: {
-    // Single-bundle output — one JS file, one CSS file
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: {
+          // Wallet/blockchain libs — large, cached separately
+          'vendor-web3': ['viem', 'wagmi', '@tanstack/react-query'],
+          // UI framework
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+        },
       },
     },
   },

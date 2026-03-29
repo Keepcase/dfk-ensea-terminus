@@ -1,6 +1,11 @@
 import { createPublicClient, http } from 'viem'
 import { dfkChain, dfkTestnet } from './chains'
-import { BAZAAR_ADDRESSES } from './contracts'
+import {
+  BAZAAR_ADDRESSES,
+  CRYSTAL_ADDRESSES,
+  HERO_ADDRESSES,
+  HERO_AUCTION_ADDRESSES,
+} from './contracts'
 
 /**
  * Network configuration — single source of truth.
@@ -15,6 +20,9 @@ export const isTestnet = networkEnv === 'testnet'
 export const activeChain = isTestnet ? dfkTestnet : dfkChain
 export const activeChainId = activeChain.id
 export const bazaarAddress = BAZAAR_ADDRESSES[activeChainId]!
+export const heroAddress = HERO_ADDRESSES[activeChainId]!
+export const heroAuctionAddress = HERO_AUCTION_ADDRESSES[activeChainId]!
+export const crystalAddress = CRYSTAL_ADDRESSES[activeChainId]!
 
 export const GLACIER_BASE = `https://glacier-api.avax.network/v1/chains/${activeChainId}/addresses`
 
