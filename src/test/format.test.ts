@@ -78,14 +78,14 @@ describe('formatTimestamp', () => {
   })
 
   describe('older than 7 days — falls back to formatDate', () => {
-    it('returns date without year for same year', () => {
+    it('returns date with year for same year', () => {
       const result = formatTimestamp(NOW_UNIX - 7 * 86400)
-      expect(result).toBe('Mar 19')
+      expect(result).toBe('Mar 19, 2025')
     })
 
-    it('returns date without year for 30 days ago (same year)', () => {
+    it('returns date with year for 30 days ago (same year)', () => {
       const result = formatTimestamp(NOW_UNIX - 30 * 86400)
-      expect(result).toBe('Feb 24')
+      expect(result).toBe('Feb 24, 2025')
     })
 
     it('returns date with year for a different year', () => {
@@ -109,9 +109,9 @@ describe('formatDate', () => {
     expect(formatDate(0)).toBe('—')
   })
 
-  it('returns date without year for current year', () => {
+  it('returns date with year for current year', () => {
     const jan1 = Math.floor(new Date('2025-01-15T12:00:00Z').getTime() / 1000)
-    expect(formatDate(jan1)).toBe('Jan 15')
+    expect(formatDate(jan1)).toBe('Jan 15, 2025')
   })
 
   it('returns date with year for a previous year', () => {

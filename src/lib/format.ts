@@ -1,16 +1,34 @@
+import { formatEther } from 'viem'
+
+/**
+ * Truncate an Ethereum address to 0x1234...5678 form.
+ */
+export function truncateAddress(address: string): string {
+  return `${address.slice(0, 6)}...${address.slice(-4)}`
+}
+
+/**
+ * Format a JEWEL wei value with locale-aware thousands separators
+ * and adaptive decimal places based on magnitude.
+ */
+export function formatJewelLocale(wei: bigint): string {
+  const num = parseFloat(formatEther(wei))
+  if (num >= 1000) return num.toLocaleString('en-US', { maximumFractionDigits: 0 })
+  if (num >= 1) return num.toLocaleString('en-US', { maximumFractionDigits: 2 })
+  return num.toLocaleString('en-US', { maximumFractionDigits: 4 })
+}
+
 /**
  * Format a unix timestamp as a short absolute date.
- * Includes year if not the current year.
  * Returns "—" for falsy values (sentinel for missing timestamps).
  */
 export function formatDate(unix: number): string {
   if (!unix) return '—'
   const date = new Date(unix * 1000)
-  const sameYear = date.getFullYear() === new Date().getFullYear()
   return date.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
-    ...(sameYear ? {} : { year: 'numeric' }),
+    year: 'numeric',
   })
 }
 

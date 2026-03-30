@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { WalletModal } from './WalletModal'
+import { truncateAddress } from '../lib/format'
 import { formatJewelDisplay } from '../lib/pricing'
 
 export function WalletButton() {
@@ -20,7 +21,7 @@ export function WalletButton() {
   const [copied, setCopied] = useState(false)
 
   if (isConnected && address) {
-    const shortAddress = `${address.slice(0, 6)}...${address.slice(-4)}`
+    const shortAddress = truncateAddress(address)
     const jewelBalance = balance
       ? (() => {
           const raw = formatJewelDisplay(balance.value, 2)
