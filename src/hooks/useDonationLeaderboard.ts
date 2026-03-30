@@ -102,8 +102,12 @@ export function useDonationLeaderboard() {
 
       // Sort by total donated (descending)
       return Array.from(donors.entries())
-        .map(([address, data]) => ({ address, ...data }))
-        .sort((a, b) => (b.totalWei > a.totalWei ? 1 : b.totalWei < a.totalWei ? -1 : 0))
+        .map(([address, stats]) => ({ address, ...stats }))
+        .sort((a, b) => {
+          if (b.totalWei > a.totalWei) return 1
+          if (b.totalWei < a.totalWei) return -1
+          return 0
+        })
     },
   })
 }

@@ -38,9 +38,6 @@ export function MusicPlayer() {
   const [modalOpen, setModalOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
 
-  // Build global index offset per region
-  let globalIndex = 0
-
   // Collapsed: just a small floating button
   if (collapsed) {
     return (
@@ -190,18 +187,21 @@ export function MusicPlayer() {
 
       {/* Jukebox modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="sm:max-w-2xl" showCloseButton>
+        <DialogContent
+          className="max-w-none sm:max-w-2xl rounded-none sm:rounded-xl"
+          showCloseButton
+        >
           <DialogHeader>
             <DialogTitle className="font-heading tracking-wide">Ensea Soundscapes</DialogTitle>
-            <p className="text-[10px] text-muted-foreground/40">
-              Music composed by{' '}
+            <p className="text-xs text-muted-foreground/60">
+              Original soundtrack by{' '}
               <a
                 href="https://x.com/SamShandley"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground/50 hover:text-foreground transition-colors"
+                className="text-foreground/70 hover:text-foreground transition-colors underline underline-offset-2"
               >
-                @SamShandley
+                Sam Shandley
               </a>
             </p>
           </DialogHeader>
@@ -235,9 +235,12 @@ export function MusicPlayer() {
 
           {/* Track list */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-h-[70vh] overflow-y-auto -mx-1 px-1 pt-3">
-            {REGIONS.map((region) => {
-              const regionStartIndex = globalIndex
-              const section = (
+            {REGIONS.map((region, regionIndex) => {
+              const regionStartIndex = REGIONS.slice(0, regionIndex).reduce(
+                (sum, r) => sum + r.tracks.length,
+                0,
+              )
+              return (
                 <div key={region.label}>
                   <h3 className="font-heading text-sm tracking-wide text-foreground/80 px-1 mb-2 pb-1.5 border-b border-border/20">
                     {region.label}
@@ -256,7 +259,13 @@ export function MusicPlayer() {
                               : 'text-foreground/70 hover:bg-secondary/40 hover:text-foreground'
                           }`}
                         >
-                          {isActive ? <NowPlaying /> : <span className="w-3.5" />}
+                          {isActive ? (
+                            <NowPlaying />
+                          ) : (
+                            <span className="w-3.5 text-center text-[10px] text-foreground/30 font-mono">
+                              {i + 1}
+                            </span>
+                          )}
                           {track.name}
                         </button>
                       )
@@ -264,8 +273,6 @@ export function MusicPlayer() {
                   </div>
                 </div>
               )
-              globalIndex += region.tracks.length
-              return section
             })}
           </div>
         </DialogContent>

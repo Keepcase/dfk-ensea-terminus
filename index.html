@@ -1,32 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ensea Terminus</title>
-    <meta name="description" content="Community-built marketplace for DeFi Kingdoms Bazaar. Browse, buy, and sell in-game items." />
+    <meta
+      name="description"
+      content="An open relay for the realms. Community-built tools for DeFi Kingdoms."
+    />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Ensea Terminus" />
-    <meta property="og:description" content="An open relay for the realms. Community-built marketplace for DeFi Kingdoms." />
+    <meta
+      property="og:description"
+      content="An open relay for the realms. Community-built tools for DeFi Kingdoms."
+    />
     <meta property="og:image" content="https://dfk.keepcase.dev/images/og-banner.jpg" />
     <meta property="og:url" content="https://dfk.keepcase.dev" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Ensea Terminus" />
-    <meta name="twitter:description" content="An open relay for the realms. Community-built marketplace for DeFi Kingdoms." />
+    <meta
+      name="twitter:description"
+      content="An open relay for the realms. Community-built tools for DeFi Kingdoms."
+    />
     <meta name="twitter:image" content="https://dfk.keepcase.dev/images/og-banner.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="min-h-screen">
     <script>
       // Apply saved theme before React loads to prevent flash
-      (function(){var t=localStorage.getItem('ensea-terminus-theme');document.documentElement.classList.add(t==='light'?'light':'dark')})();
+      ;(function () {
+        var t = localStorage.getItem('ensea-terminus-theme')
+        document.documentElement.classList.add(t === 'light' ? 'light' : 'dark')
+      })()
     </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
